@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>891109642958-mmt28dgj4qe7drgflljlv36m8bb3mac7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.891109642958-mmt28dgj4qe7drgflljlv36m8bb3mac7</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA2le7-Dk_sx2jPMrn8CtzZSSemOkPYXqA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>891109642958</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.kzk-maeda.FirebaseTutorial</string>
+	<key>PROJECT_ID</key>
+	<string>fir-tutorial-99d9e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fir-tutorial-99d9e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:891109642958:ios:6d7cfa44f0cb7f0353b69f</string>
+	<key>DATABASE_URL</key>
+	<string>https://fir-tutorial-99d9e.firebaseio.com</string>
+</dict>
+</plist>
