@@ -44,4 +44,26 @@ class LoginViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func twitterLogin(_ sender: Any) {
+        guard let userId = userIdField.text else {
+            return
+        }
+        let provider = OAuthProvider(providerID: "twitter.com")
+        provider.getCredentialWith(nil) { (credential, error) in
+            if error != nil {
+                print(error!)
+                return
+            }
+            guard let credential = credential else { return }
+            Auth.auth().signIn(with: credential) { (result, error) in
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                self.performSegue(withIdentifier: "loginSegue", sender: userId)
+            }
+        }
+    }
+    
 }
