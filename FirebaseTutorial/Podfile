@@ -8,7 +8,8 @@ target 'FirebaseTutorial' do
   # Pods for FirebaseTutorial
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
-  pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
 

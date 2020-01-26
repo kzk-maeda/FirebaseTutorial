@@ -92,7 +92,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="VO5-Zb-QXf"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vA5-e7-PPx"/>
+                    <navigationItem key="navigationItem" id="vA5-e7-PPx">
+                        <barButtonItem key="rightBarButtonItem" title="SetUp" id="ViY-uN-Mlj">
+                            <connections>
+                                <segue destination="vIs-ix-oEM" kind="show" id="QoW-1s-iMx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="messageLabel" destination="ncL-n6-ehh" id="gsi-R0-OEW"/>
                     </connections>
@@ -100,6 +106,112 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBZ-aH-Ys4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1804.3478260869567" y="138.61607142857142"/>
+        </scene>
+        <!--Setup View Controller-->
+        <scene sceneID="4FS-Vd-lOB">
+            <objects>
+                <viewController id="vIs-ix-oEM" customClass="SetupViewController" customModule="FirebaseTutorial" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F7t-lP-hwn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="i4P-1i-did">
+                                <rect key="frame" x="20" y="160" width="374" height="497.5"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="see-Ht-Zvk">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-sT-8h4">
+                                        <rect key="frame" x="0.0" y="59" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YdZ-zo-R00">
+                                        <rect key="frame" x="0.0" y="118" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DbG-Zi-Xmp">
+                                        <rect key="frame" x="0.0" y="177" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPW-WH-5lW">
+                                        <rect key="frame" x="0.0" y="236" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7A-8W-xhz">
+                                        <rect key="frame" x="0.0" y="281.5" width="374" height="216"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="-31571719.835754037">
+                                            <!--2000-01-01 14:04:40 +0000-->
+                                        </date>
+                                        <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                            <!--1970-01-01 11:00:00 +0000-->
+                                        </date>
+                                        <locale key="locale" localeIdentifier="ja"/>
+                                    </datePicker>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Vu-Xa-uyr">
+                                <rect key="frame" x="178" y="705" width="62" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submit:" destination="vIs-ix-oEM" eventType="touchUpInside" id="pxl-xb-fME"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="06f-ed-Giq" firstAttribute="trailing" secondItem="i4P-1i-did" secondAttribute="trailing" constant="20" id="IlQ-cj-la0"/>
+                            <constraint firstItem="i4P-1i-did" firstAttribute="leading" secondItem="06f-ed-Giq" secondAttribute="leading" constant="20" id="lU4-et-ppa"/>
+                            <constraint firstItem="i4P-1i-did" firstAttribute="top" secondItem="06f-ed-Giq" secondAttribute="top" constant="72" id="uOr-hw-Gl2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="06f-ed-Giq"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aZs-PV-Izn"/>
+                    <connections>
+                        <outlet property="birthdayPickerField" destination="y7A-8W-xhz" id="sf7-9W-unj"/>
+                        <outlet property="emailAddrTextField" destination="DbG-Zi-Xmp" id="gJI-SL-C7z"/>
+                        <outlet property="firstNameTextField" destination="s1F-sT-8h4" id="Hs2-zt-z3J"/>
+                        <outlet property="lastNameTextField" destination="YdZ-zo-R00" id="KTL-om-whd"/>
+                        <outlet property="userIdTextField" destination="see-Ht-Zvk" id="CO3-hj-36c"/>
+                        <segue destination="IAd-M1-tR4" kind="show" identifier="setupCompleteSegue" id="vLR-8N-dbU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rwJ-i2-TeI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2762.3188405797105" y="138.61607142857142"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="UqZ-Ud-OHy">
+            <objects>
+                <viewController id="IAd-M1-tR4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3oO-2s-n4E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set Up Completed!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJs-5X-z5g">
+                                <rect key="frame" x="80" y="303" width="254" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="wZn-cN-T2G"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tZ0-Kj-AiO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jwe-X2-ut1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3806" y="140"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="aX1-Je-dSY">
