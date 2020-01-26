@@ -46,9 +46,7 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func twitterLogin(_ sender: Any) {
-        guard let userId = userIdField.text else {
-            return
-        }
+        var userId: String?
         let provider = OAuthProvider(providerID: "twitter.com")
         provider.getCredentialWith(nil) { (credential, error) in
             if error != nil {
@@ -61,9 +59,22 @@ class LoginViewController: UIViewController {
                     print(error!)
                     return
                 }
-                self.performSegue(withIdentifier: "loginSegue", sender: userId)
+                guard let result = result else {return}
+                print(result)
+                // Store Access Token
+                if let credential = result.credential as? OAuthCredential,
+                    let accessToken = credential.accessToken,
+                    let secret = credential.secret {
+                    UserDefaults.standard.set(accessToken, forKey:"twitterAccessToken")
+                    UserDefaults.standard.set(secret, forKey: "twitterSecret")
+                }
+                userId = result.additionalUserInfo?.username
             }
+            self.performSegue(withIdentifier: "loginSegue", sender: userId)
+            
         }
+        sleep(1)
+        // self.performSegue(withIdentifier: "loginSegue", sender: userId)
     }
     
 }
