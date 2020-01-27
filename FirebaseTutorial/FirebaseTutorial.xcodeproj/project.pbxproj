@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5744BF3223DDD48100CE243D /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5744BF3123DDD48100CE243D /* SetupViewController.swift */; };
 		5744BF3423DDD74900CE243D /* UsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5744BF3323DDD74900CE243D /* UsersModel.swift */; };
+		5744BF3623DF31F700CE243D /* SetupResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5744BF3523DF31F700CE243D /* SetupResultViewController.swift */; };
 		5767F83923D9F0CF0046C9DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5767F83823D9F0CF0046C9DE /* AppDelegate.swift */; };
 		5767F83B23D9F0CF0046C9DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5767F83A23D9F0CF0046C9DE /* SceneDelegate.swift */; };
 		5767F84023D9F0CF0046C9DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5767F83E23D9F0CF0046C9DE /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		5744BF3123DDD48100CE243D /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		5744BF3323DDD74900CE243D /* UsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersModel.swift; sourceTree = "<group>"; };
+		5744BF3523DF31F700CE243D /* SetupResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupResultViewController.swift; sourceTree = "<group>"; };
 		5767F83523D9F0CF0046C9DE /* FirebaseTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5767F83823D9F0CF0046C9DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5767F83A23D9F0CF0046C9DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				5767F85323D9F6FC0046C9DE /* SignupViewController.swift */,
 				5767F85523D9F70B0046C9DE /* AuthResultViewController.swift */,
 				5744BF3123DDD48100CE243D /* SetupViewController.swift */,
+				5744BF3523DF31F700CE243D /* SetupResultViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				5767F85623D9F70B0046C9DE /* AuthResultViewController.swift in Sources */,
 				5767F83B23D9F0CF0046C9DE /* SceneDelegate.swift in Sources */,
 				5767F85923DB37150046C9DE /* Config.swift in Sources */,
+				5744BF3623DF31F700CE243D /* SetupResultViewController.swift in Sources */,
 				5744BF3423DDD74900CE243D /* UsersModel.swift in Sources */,
 				5744BF3223DDD48100CE243D /* SetupViewController.swift in Sources */,
 			);

@@ -18,14 +18,13 @@ class SetupViewController: UIViewController {
     @IBOutlet weak var emailAddrTextField: UITextField!
     @IBOutlet weak var birthdayPickerField: UIDatePicker!
     
-    let db = Firestore.firestore()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     @IBAction func submit(_ sender: Any) {
         // Prepare data string
+        let db = Firestore.firestore()
         let user = User(
             userId: userIdTextField.text,
             firstName: firstNameTextField.text,
@@ -45,6 +44,8 @@ class SetupViewController: UIViewController {
                 }
                 self.performSegue(withIdentifier: "setupCompleteSegue", sender: nil)
             })
+            print(ref?.documentID as Any)
+            UserDefaults.standard.set(ref?.documentID, forKey: "documentID")
         } catch {
             print(error.localizedDescription)
             return
