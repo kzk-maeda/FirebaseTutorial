@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class SignupViewController: UIViewController {
     
@@ -29,12 +28,12 @@ class SignupViewController: UIViewController {
         guard let password = passwordField.text else {
             return
         }
-        Auth.auth().createUser(withEmail: userId, password: password) { (result, error) in
-            guard let result = result else {return}
-            print(result)
-            
-            self.navigationController?.popViewController(animated: true)
-        }
+        let apiClient = APIClient()
+        apiClient.createUser(email: userId, password: password, completion: toNextVC)
+    }
+    
+    private func toNextVC() {
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
