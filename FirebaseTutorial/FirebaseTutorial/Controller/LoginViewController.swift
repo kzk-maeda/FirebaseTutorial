@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -36,45 +35,17 @@ class LoginViewController: UIViewController {
         guard let password = passwordField.text else {
             return
         }
-        Auth.auth().signIn(withEmail: userId, password: password) { (result, error) in
-            guard let result = result else {return}
-            print(result)
-            
-            self.performSegue(withIdentifier: "loginSegue", sender: userId)
-        }
+        let apiClient = APIClient()
+        apiClient.signin(email: userId, password: password, completion: toNextVC)
     }
     
-    
+    private func toNextVC() -> Void {
+        performSegue(withIdentifier: "loginSegue", sender: String.self)
+    }
+
     @IBAction func twitterLogin(_ sender: Any) {
-        var userId: String?
-        let provider = OAuthProvider(providerID: "twitter.com")
-        provider.getCredentialWith(nil) { (credential, error) in
-            if error != nil {
-                print(error!)
-                return
-            }
-            guard let credential = credential else { return }
-            Auth.auth().signIn(with: credential) { (result, error) in
-                if error != nil {
-                    print(error!)
-                    return
-                }
-                guard let result = result else {return}
-                print(result)
-                // Store Access Token
-                if let credential = result.credential as? OAuthCredential,
-                    let accessToken = credential.accessToken,
-                    let secret = credential.secret {
-                    UserDefaults.standard.set(accessToken, forKey:"twitterAccessToken")
-                    UserDefaults.standard.set(secret, forKey: "twitterSecret")
-                }
-                userId = result.additionalUserInfo?.username
-            }
-            self.performSegue(withIdentifier: "loginSegue", sender: userId)
-            
-        }
-        sleep(1)
-        // self.performSegue(withIdentifier: "loginSegue", sender: userId)
+        let apiClient = APIClient()
+        apiClient.twitterLogin(comlpetion: toNextVC)
     }
     
 }
