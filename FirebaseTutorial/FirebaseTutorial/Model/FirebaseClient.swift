@@ -61,5 +61,27 @@ struct APIClient: APIClientProtocol {
         }
         sleep(1)
     }
+    
+    func insertDB<T: Codable> (data: T, database: String, completion: @escaping () -> Void) -> String {
+        let db = Firestore.firestore()
+        let encoder = Firestore.Encoder()
+        do {
+            let data = try encoder.encode(data)
+            // Store data to Firestore
+            var ref: DocumentReference? = nil
+            ref = db.collection(database).addDocument(data: data, completion: { (error) in
+                if error != nil {
+                    print(error as Any)
+                    return
+                }
+                completion()
+            })
+            print(ref?.documentID as Any)
+            return ref!.documentID
+        } catch {
+            print(error.localizedDescription)
+            return error as! String
+        }
+    }
 
 }

@@ -23,8 +23,7 @@ class SetupViewController: UIViewController {
     }
 
     @IBAction func submit(_ sender: Any) {
-        // Prepare data string
-        let db = Firestore.firestore()
+        // Prepare data string        
         let user = User(
             userId: userIdTextField.text,
             firstName: firstNameTextField.text,
@@ -32,26 +31,15 @@ class SetupViewController: UIViewController {
             email: emailAddrTextField.text,
             birthday: birthdayPickerField.date
         )
-        let encoder = Firestore.Encoder()
-        do {
-            let data = try encoder.encode(user)
-            // Store data to Firestore
-            var ref: DocumentReference? = nil
-            ref = db.collection("users").addDocument(data: data, completion: { (error) in
-                if error != nil {
-                    print(error as Any)
-                    return
-                }
-                self.performSegue(withIdentifier: "setupCompleteSegue", sender: nil)
-            })
-            print(ref?.documentID as Any)
-            UserDefaults.standard.set(ref?.documentID, forKey: "documentID")
-        } catch {
-            print(error.localizedDescription)
-            return
-        }
+        let database = "users"
+        let apiClient = APIClient()
+        let documentID = apiClient.insertDB(data: user, database: database, completion: toNextVC)
+        UserDefaults.standard.set(documentID, forKey: "documentID")
         
-        
+    }
+    
+    private func toNextVC() {
+        performSegue(withIdentifier: "setupCompleteSegue", sender: nil)
     }
     
 }

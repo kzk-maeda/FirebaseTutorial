@@ -12,4 +12,5 @@ protocol APIClientProtocol {
     func signin(email: String, password: String,  completion: @escaping () -> Void)
     func createUser(email: String, password: String,  completion: @escaping () -> Void)
     func twitterLogin(comlpetion: @escaping () -> Void)
+    func insertDB<T: Codable> (data: T, database: String, completion: @escaping () -> Void) -> String
 }
