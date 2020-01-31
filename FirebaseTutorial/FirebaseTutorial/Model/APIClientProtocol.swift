@@ -13,4 +13,6 @@ protocol APIClientProtocol {
     func createUser(email: String, password: String,  completion: @escaping () -> Void)
     func twitterLogin(comlpetion: @escaping () -> Void)
     func insertDB<T: Codable> (data: T, database: String, completion: @escaping () -> Void) -> String
+    func selectDB(id: String, database: String, completion: @escaping ([String : Any]) -> Void)
+    func timestampToString(date: NSObject) -> String
 }

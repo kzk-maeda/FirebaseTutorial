@@ -11,6 +11,7 @@ import Firebase
 import FirebaseFirestoreSwift
 
 struct APIClient: APIClientProtocol {
+    
     func signin(email: String, password: String, completion: @escaping () -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if error != nil {
@@ -82,6 +83,26 @@ struct APIClient: APIClientProtocol {
             print(error.localizedDescription)
             return error as! String
         }
+    }
+    
+    func selectDB (id: String, database: String, completion: @escaping ([String : Any]) -> Void) {
+        let db = Firestore.firestore()
+        let ref = db.collection(database).document(id)
+        ref.getDocument(source: .default) { (document, error) in
+            guard let document = document else {return}
+            let data = document.data()!
+            completion(data)
+        }
+    }
+    
+    func timestampToString(date: NSObject) -> String {
+        let timestamp = date as! Timestamp
+        let dateValue = timestamp.dateValue()
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "ja_JP")
+        f.dateStyle = .long
+        f.timeStyle = .none
+        return f.string(from: dateValue)
     }
 
 }

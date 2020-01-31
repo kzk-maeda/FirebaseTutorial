@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseFirestoreSwift
 
 class SetupViewController: UIViewController {
     
@@ -23,7 +21,7 @@ class SetupViewController: UIViewController {
     }
 
     @IBAction func submit(_ sender: Any) {
-        // Prepare data string        
+        // Prepare data string
         let user = User(
             userId: userIdTextField.text,
             firstName: firstNameTextField.text,

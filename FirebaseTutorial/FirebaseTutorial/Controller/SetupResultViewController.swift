@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseFirestoreSwift
 
 class SetupResultViewController: UIViewController {
 
@@ -28,31 +26,18 @@ class SetupResultViewController: UIViewController {
     }
     
     private func loadDocument(documentID: String) {
-        let db = Firestore.firestore()
-        if documentID.isEmpty {return}
-        let ref = db.collection("users").document(documentID)
-        ref.getDocument(source: .default) { (document, error) in
-            guard let document = document else {return}
-            let data = document.data()!
-            DispatchQueue.main.async {
-                self.userIdLabel.text = data["userId"] as? String
-                self.firstNameLabel.text = data["firstName"] as? String
-                self.lastNameLabel.text = data["lastName"] as? String
-                self.emailAddrLabel.text = data["email"] as? String
-                self.birthdayLabel.text = self.timestampToString(timestamp: data["birthday"] as! Timestamp)
-                
-            }
-        }
+        let database = "users"
+        let apiClient = APIClient()
+        apiClient.selectDB(id: documentID, database: database, completion: displayUserInfo)
     }
     
-    private func timestampToString(timestamp: Timestamp) -> String {
-        let dateValue = timestamp.dateValue()
-        let f = DateFormatter()
-        f.locale = Locale(identifier: "ja_JP")
-        f.dateStyle = .long
-        f.timeStyle = .none
-        return f.string(from: dateValue)
+    private func displayUserInfo(data : [String : Any]) {
+        let apiClient = APIClient()
+        userIdLabel.text = data["userId"] as? String
+        firstNameLabel.text = data["firstName"] as? String
+        lastNameLabel.text = data["lastName"] as? String
+        emailAddrLabel.text = data["email"] as? String
+        birthdayLabel.text = apiClient.timestampToString(date: data["birthday"] as! NSObject)
     }
-
 
 }
